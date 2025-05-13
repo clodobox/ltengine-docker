@@ -1,0 +1,25 @@
+services:
+  ltengine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./ltengine-models:/app/models
+    
+    environment:
+      # MODEL SELECTION (uncomment one)
+      # Light model (1GB RAM) - Good for testing, poor translations
+      # - MODEL=gemma3-1b
+      
+      # Default model (4GB RAM)
+      - MODEL=gemma3-4b
+      
+      # Medium model (8GB RAM)
+      # - MODEL=gemma3-12b
+      
+      # Large model (16GB RAM) - Best translation quality, slowest
+      # - MODEL=gemma4-27b
+      
+    restart: unless-stopped
