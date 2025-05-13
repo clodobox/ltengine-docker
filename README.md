@@ -6,7 +6,7 @@ A simple Docker setup for running [LTEngine](https://github.com/LibreTranslate/L
 
 1. Clone this repository:
 ```
-git clone https://github.com/YOUR_USERNAME/ltengine-docker.git
+git clone https://github.com/clodobox/ltengine-docker.git
 cd ltengine-docker
 ```
 
