@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "5050:5050"
+      - 5050:5050
     volumes:
-      - ./ltengine-models:/app/models
+      - ./ltengine-models:/root/.cache/huggingface
     environment:
       # MODEL SELECTION (uncomment one)
       #
