@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
 
 # Clone repository
 WORKDIR /build
-RUN git clone https://github.com/LibreTranslate/LTEngine --recursive .
+RUN git clone https://github.com/LibreTranslate/LTEngine --recursive . || \
+    (git fetch && git pull && git submodule update --init --recursive)
 
 # Update Rust to handle Rust 2024 edition
 RUN rustup update
@@ -24,6 +25,7 @@ FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y \
     libssl-dev \
     ca-certificates \
+    libgomp1 \  # Ajout de libgomp1 pour libgomp.so.1
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
