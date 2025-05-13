@@ -41,4 +41,5 @@ This project is licensed under GNU GPL v3 - see the LICENSE file for details.
 ## Acknowledgements
 
 This is a Docker setup for [LTEngine](https://github.com/LibreTranslate/LTEngine), which is developed by the LibreTranslate project.
+
 I am in no way affiliated with them.
