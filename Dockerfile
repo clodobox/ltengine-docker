@@ -1,4 +1,4 @@
-FROM rust:1.74-slim-bookworm as builder
+FROM rust:latest as builder
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
 # Clone repository
 WORKDIR /build
 RUN git clone https://github.com/LibreTranslate/LTEngine --recursive .
+
+# Update Rust to handle Rust 2024 edition
+RUN rustup update
 
 # Build for CPU only
 RUN cargo build --release
