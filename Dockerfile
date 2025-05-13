@@ -18,5 +18,4 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=builder /build/target/release/ltengine /app/ltengine
-RUN mkdir -p /app/models
 ENTRYPOINT ["/bin/bash", "-c", "/app/ltengine -m ${MODEL:-gemma3-4b}"]
