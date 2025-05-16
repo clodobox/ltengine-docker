@@ -16,6 +16,16 @@ cd ltengine-docker
 
 2. Edit the `docker-compose.yml` file to select your preferred model by uncommenting the appropriate line:
 ```yaml
+# For CPU (default)
+dockerfile: Dockerfile
+# For Vulkan (Intel GPU & iGPU / AMD Graphics)
+# dockerfile: Dockerfile-vulkan
+
+# Uncomment for Vulkan
+# devices:
+#   - /dev/dri/renderD128:/dev/dri/renderD128
+#   - /dev/dri/card0:/dev/dri/card0
+
 environment:
   # MODEL SELECTION (uncomment one)
   #
@@ -46,25 +56,20 @@ docker-compose up -d
 - **gemma3-12b**: Medium model (8GB RAM)
 - **gemma4-27b**: Large model (16GB RAM) - Best translation quality, slowest
 
-## Hardware Acceleration
-
-To enable Vulkan acceleration, uncomment the relevant sections in `docker-compose.yml`:
-
-```yaml
-# dockerfile: Dockerfile-vulkan
-
-# Uncomment for Vulkan
-# devices:
-#   - /dev/dri/renderD128:/dev/dri/renderD128
-#   - /dev/dri/card0:/dev/dri/card0
-```
-
 ## License
 
 This project is licensed under GNU Affero General Public License v3 - see the LICENSE file for details.
 
 ## Acknowledgements
+### Cuda
+I don't think adapting it for CUDA is very complicated.
 
-This is a Docker setup for [LTEngine](https://github.com/LibreTranslate/LTEngine), which is developed by the LibreTranslate project.
+It should look something like this: in Dockerfile, change the line “RUN cargo build --features vuklan--release” to “--features cuda”.
+There will certainly be some dependencies to remove/add to the “apt install” lines.
+
+Without nvidia hardware to test, I can't tell you more.
+
+### LTEngine
+This is a Docker setup for [LTEngine](https://github.com/LibreTranslate/LTEngine), which is developed by [Piero Toffanin](https://github.com/pierotofy) & [ButterflyOfFire](https://github.com/BoFFire).
 
 I am in no way affiliated with them.
