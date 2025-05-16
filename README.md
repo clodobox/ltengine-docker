@@ -1,5 +1,9 @@
 # LTEngine Docker Setup
 
+⚠️ **DISCLAIMER: EXPERIMENTAL PROJECT** ⚠️
+
+**This is an amateur, unsupported project that does not follow standard practices for code quality, security, or stability. Use at your own risk in testing environments only. Not recommended for production use.**
+
 A simple Docker setup for running [LTEngine](https://github.com/LibreTranslate/LTEngine) on CPU.
 
 ## Usage
@@ -13,11 +17,19 @@ cd ltengine-docker
 2. Edit the `docker-compose.yml` file to select your preferred model by uncommenting the appropriate line:
 ```yaml
 environment:
-# Uncomment one model:
-# - MODEL=gemma3-1b
-- MODEL=gemma3-4b
-# - MODEL=gemma3-12b
-# - MODEL=gemma4-27b
+  # MODEL SELECTION (uncomment one)
+  #
+  # Light model (1GB RAM) - Good for testing, poor translations
+  # - MODEL=gemma3-1b
+  #
+  # Default model (4GB RAM)
+  - MODEL=gemma3-4b
+  #
+  # Medium model (8GB RAM)
+  # - MODEL=gemma3-12b
+  #
+  # Large model (16GB RAM) - Best translation quality, slowest
+  # - MODEL=gemma4-27b
 ```
 
 3. Run the container:
@@ -25,7 +37,7 @@ environment:
 docker-compose up -d
 ```
 
-4. Access the API at `http://localhost:5050`
+4. Access at `http://localhost:5050`
 
 ## Models
 
@@ -34,9 +46,22 @@ docker-compose up -d
 - **gemma3-12b**: Medium model (8GB RAM)
 - **gemma4-27b**: Large model (16GB RAM) - Best translation quality, slowest
 
+## Hardware Acceleration
+
+To enable Vulkan acceleration, uncomment the relevant sections in `docker-compose.yml`:
+
+```yaml
+# dockerfile: Dockerfile-vulkan
+
+# Uncomment for Vulkan
+# devices:
+#   - /dev/dri/renderD128:/dev/dri/renderD128
+#   - /dev/dri/card0:/dev/dri/card0
+```
+
 ## License
 
-This project is licensed under GNU GPL v3 - see the LICENSE file for details.
+This project is licensed under GNU Affero General Public License v3 - see the LICENSE file for details.
 
 ## Acknowledgements
 
