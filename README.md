@@ -1,6 +1,6 @@
 # LTEngine Docker Setup
 
-A simple Docker setup for running [LTEngine](https://github.com/LibreTranslate/LTEngine) on CPU.
+A simple Docker setup for running [LTEngine](https://github.com/LibreTranslate/LTEngine) on CPU or GPU with Vulkan (AMD / Intel graphics).
 
 ⚠️ **DISCLAIMER: EXPERIMENTAL PROJECT** ⚠️
 
