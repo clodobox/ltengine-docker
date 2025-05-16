@@ -3,10 +3,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # dockerfile: Dockerfile-vulkan
     ports:
       - 5050:5050
     volumes:
       - ./ltengine-models:/root/.cache/huggingface
+    # Uncomment for Vulkan
+    # devices:
+      # - /dev/dri/renderD128:/dev/dri/renderD128
+      # - /dev/dri/card0:/dev/dri/card0
     environment:
       # MODEL SELECTION (uncomment one)
       #
@@ -21,4 +26,3 @@ services:
       #
       # Large model (16GB RAM) - Best translation quality, slowest
       # - MODEL=gemma4-27b
-    restart: unless-stopped
