@@ -2,7 +2,9 @@ services:
   ltengine:
     build:
       context: .
+      # For CPU (default)
       dockerfile: Dockerfile
+      # For Vulkan (Intel GPU & iGPU / AMD Graphics)
       # dockerfile: Dockerfile-vulkan
     ports:
       - 5050:5050
