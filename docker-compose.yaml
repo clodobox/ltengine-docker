@@ -27,4 +27,4 @@ services:
       # - MODEL=gemma3-12b
       #
       # Large model (16GB RAM) - Best translation quality, slowest
-      # - MODEL=gemma4-27b
+      # - MODEL=gemma3-27b
